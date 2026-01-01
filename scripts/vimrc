@@ -18,6 +18,8 @@ nnoremap <C-b> :NERDTreeToggle<CR>
 autocmd VimEnter * NERDTree | wincmd p
 " Shift focuse on to NERDTree using \n
 nnoremap <leader>n :NERDTreeFocus<CR>
+" Show Hidden Files in NERDTREE
+let NERDTreeShowHidden=1 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
 
@@ -26,14 +28,22 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 au FileType c,cpp,py,logs,conf,h setlocal number 
 " Add Padding to the left 
 set foldcolumn=1
+" Changing Indentation Width
+set tabstop=4
+set shiftwidth=4
+" Make VIM use system clipboard by default
+set clipboard=unnamed
+" Compile shortcut
+" Compile & Run C program
+autocmd FileType c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 
-" Settingup Cursore 
+" Setting up Cursore 
 " blinking I-beam in insert mode  
 let &t_SI = "\<esc>[5 q"
 " Block Beam otherwise
 let &t_EI = "\<esc>[2 q"
 " Reset Beam to default value for terminal
-autocmd VimLeave * silent !echo -ne "\e[ q" 
+autocmd VimLeave * silent !echo -ne "\e[5 q" 
 
 
 "" Shell-style navigation in insert mode
@@ -50,9 +60,11 @@ inoremap <A-b> <Esc>bi
 " Move forward a word (Alt+F)
 inoremap <A-f> <Esc>ea
 " Delete previous word (Ctrl+W)
-inoremap <C-w> <Esc>dbi
+inoremap <C-w> <Esc>diwi
 " Delete next word (Alt+D)
 inoremap <A-d> <Esc>dea
+" Undo (Ctrl+Z)
+inoremap <C-z> <Esc>ua
 
 "" Rainbow Parentheses
 " Load Rainbow Parentheses Gloablly
