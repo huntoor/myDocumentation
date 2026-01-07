@@ -60,7 +60,7 @@ inoremap <A-b> <Esc>bi
 " Move forward a word (Alt+F)
 inoremap <A-f> <Esc>ea
 " Delete previous word (Ctrl+W)
-inoremap <C-w> <Esc>diwi
+inoremap <C-w> <Esc>diwa
 " Delete next word (Alt+D)
 inoremap <A-d> <Esc>dea
 " Undo (Ctrl+Z)
