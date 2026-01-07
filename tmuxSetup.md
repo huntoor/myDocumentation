@@ -8,6 +8,8 @@ To setup tmux plugin manager use:
 ```bash
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+To install Plugins use in tmux press ``prefix`` + ``I`` to fetch the plugin.
+
 here is [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 
 ## My Config File
