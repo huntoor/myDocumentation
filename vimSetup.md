@@ -11,6 +11,11 @@ After installing you will need to edit your plugins in the ~/.vimrc
 
 here is my [.vimrc](scripts/vimrc) file
 
+You can link the config file using the following cmd:
+```bash
+    ln -s ./scripts/vimrc ~/.vimrc
+```
+
 Reload the file or restart Vim, then you can,
 
 - ``:PlugInstall`` to install the plugins

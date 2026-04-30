@@ -2,6 +2,7 @@
 I made this configuration using https://tmuxai.dev/
 
 ## Install Tmux on your machine
+Here is a guid on [how to install tmux](https://tmuxcheatsheet.com/how-to-install-tmux/)
 
 ## Install Tmux Plugin Manager
 To setup tmux plugin manager use:
@@ -13,7 +14,14 @@ To install Plugins use in tmux press ``prefix`` + ``I`` to fetch the plugin.
 here is [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 
 ## My Config File
-Here is the [Configuration File](scripts/tmux.conf)
+
+Here is my [Configuration File](scripts/tmux.conf)
+
+To link the config file use the following cmd:
+
+```bash
+    ln -s ./scripts/tmux.conf ~/.tmux.conf
+```
 
 ## My Customization
 ```vim
