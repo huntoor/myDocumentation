@@ -28,3 +28,23 @@ Reload the file or restart Vim, then you can,
 
 ### Reloading vimrc file
 You can use ``:source ~/.vimrc`` to reload the vimrc file
+
+## coc.nvim Setup
+To install language servers use:
+
+For C/C++:
+```vim
+:CocInstall coc-clangd
+```
+For the language server you will have to install `clangd` on your device
+
+For Python
+```vim
+:CocInstall coc-clangd
+```
+
+For Rust:
+```vim
+:CocInstall coc-rust-analyzer
+```
+
