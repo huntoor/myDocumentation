@@ -40,7 +40,7 @@ For the language server you will have to install `clangd` on your device
 
 For Python
 ```vim
-:CocInstall coc-clangd
+:CocInstall coc-python
 ```
 
 For Rust:
