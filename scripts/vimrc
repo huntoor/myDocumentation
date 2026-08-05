@@ -10,6 +10,8 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/lightline.vim'
 " coc.nvim Autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" gruvbox ColorScheme
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -38,6 +40,59 @@ set clipboard=unnamed
 " Compile shortcut
 " Compile & Run C program
 autocmd FileType c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+
+" Terminal Toggle using Ctrl+`
+let g:tab_term_map = {}
+" Initialize tab-local variables for each tab
+function! InitTerminalVars()
+    if !exists('t:term_buff')
+        let t:term_buff = -1
+    endif
+    if !exists('t:term_win')
+        let t:term_win = -1
+    endif
+endfunction
+
+" Run on startup and when creating new tabs
+call InitTerminalVars()
+autocmd TabNew * call InitTerminalVars()
+
+function! ToggleTerminal()
+    " Initialize if needed
+    if !exists('t:term_buff')
+        let t:term_buff = -1
+    endif
+    if !exists('t:term_win')
+        let t:term_win = -1
+    endif
+
+    if t:term_win != -1 && win_gotoid(t:term_win)
+		if bufexists(t:term_buff)
+			execute 'bdelete!' t:term_buff
+		endif
+
+        let t:term_win = -1
+		let t:term_buff = -1
+        return
+    endif
+
+    if bufexists(t:term_buff) && t:term_buff != -1
+        belowright split
+        execute 'buffer ' . t:term_buff
+    else
+        belowright terminal
+        let t:term_buff = bufnr('%')
+		let g:tab_term_map[tabpagenr()] = t:term_buff
+    endif
+
+    let t:term_win = win_getid()
+    execute "resize " . (winheight(0) - 3)
+    startinsert
+endfunction
+
+
+nnoremap <C-t> :call ToggleTerminal()<CR>
+tnoremap <C-t> <C-\><C-n>:call ToggleTerminal()<CR>
 
 " Setting up Cursore 
 " blinking I-beam in insert mode  
@@ -83,6 +138,16 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+"" gruvbox ColorScheme
+autocmd vimenter * ++nested colorscheme gruvbox
+" Set Dark Theme
+set background=dark
+colorscheme gruvbox
+" 
+if has('termguicolors')
+    set termguicolors
+endif
+
 
 "" coc.nvim
 " https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
