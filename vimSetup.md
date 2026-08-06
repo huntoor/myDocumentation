@@ -48,3 +48,12 @@ For Rust:
 :CocInstall coc-rust-analyzer
 ```
 
+My `:CocConfig`:
+```config
+{
+     "inlayHint.enable": false,
+     "clangd.arguments": [
+       "--header-insertion=never"
+     ]
+}
+```
