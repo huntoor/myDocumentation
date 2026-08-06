@@ -37,6 +37,8 @@ set tabstop=4
 set shiftwidth=4
 " Make VIM use system clipboard by default
 set clipboard=unnamed
+" Keep lines above/below cursor while moving
+set scrolloff=8
 " Compile shortcut
 " Compile & Run C program
 autocmd FileType c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
