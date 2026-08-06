@@ -86,7 +86,7 @@ function! ToggleTerminal()
     endif
 
     let t:term_win = win_getid()
-    execute "resize " . (winheight(0) - 3)
+    execute "resize " . (winheight(0) - 5)
     startinsert
 endfunction
 
