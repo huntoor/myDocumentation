@@ -95,6 +95,10 @@ endfunction
 
 nnoremap <C-t> :call ToggleTerminal()<CR>
 tnoremap <C-t> <C-\><C-n>:call ToggleTerminal()<CR>
+" Enter Normal mode using Esc
+tnoremap <Esc> <C-\><C-n>
+" Delete Prev word when using CTRL+W
+tnoremap <C-w> <C-w>.
 
 " Setting up Cursore 
 " blinking I-beam in insert mode  
@@ -221,6 +225,13 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Setting Highlight for Errors/Warnings
+" Override gruvbox highlighting
+autocmd ColorScheme gruvbox highlight CocErrorHighlight cterm=underline gui=underline guisp=#fb4934
+autocmd ColorScheme gruvbox highlight CocWarningHighlight cterm=underline gui=underline guisp=#fe8019
+autocmd ColorScheme gruvbox highlight CocInfoHighlight cterm=underline gui=underline guisp=#fabd2f
+autocmd ColorScheme gruvbox highlight CocHintHighlight cterm=underline gui=underline guisp=#83a598
 
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
